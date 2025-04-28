@@ -10,4 +10,5 @@ export GITHUB_PERSONAL_ACCESS_TOKEN="YOUR_GITHUB_TOKEN"
 # @modelcontextprotocol/server-github is the package that provides the MCP server functionality
 
 # Run the MCP GitHub server
+# See: https://www.npmjs.com/package/@modelcontextprotocol/server-github
 npx -y @modelcontextprotocol/server-github 
