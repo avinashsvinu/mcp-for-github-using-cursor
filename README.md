@@ -1,3 +1,5 @@
+<img width="762" alt="image" src="https://github.com/user-attachments/assets/f9d79608-a2b8-471e-bc80-d14ffc4e6506" />
+
 # Cursor MCP for GitHub
 
 This repository contains the setup for the Model Context Protocol (MCP) server that enables GitHub operations directly from within Cursor IDE.
