@@ -2,6 +2,8 @@
 
 # Cursor MCP for GitHub
 
+📰 **Fresh out of the press!**
+
 This repository contains the setup for the Model Context Protocol (MCP) server that enables GitHub operations directly from within Cursor IDE.
 
 ## What is MCP?
@@ -26,6 +28,7 @@ The Model Context Protocol (MCP) is a powerful tool that allows AI assistants in
 - Cursor IDE installed
 - GitHub account
 - GitHub Personal Access Token with `repo` scope
+- The MCP server uses the [`@modelcontextprotocol/server-github`](https://www.npmjs.com/package/@modelcontextprotocol/server-github) npm package, which is run via `npx`. No global installation is required—`npx` will fetch and run the latest version automatically.
 
 ### Step-by-Step Setup
 
@@ -104,14 +107,11 @@ graph TD
     C --> K
 ```
 
-> **Note:**
-> - **Local**: The Cursor IDE, AI Assistant, and MCP Server all run on your local development machine during development.
-> - **Remote**: GitHub is a remote cloud service.
->
-> If you want to host the MCP server remotely (e.g., on a cloud VM or server), you can deploy the contents of this repo and run `run.sh` on your remote machine. Make sure to:
-> - Set up secure access (e.g., firewall, authentication).
-> - Update your Cursor MCP configuration to point to the remote server's address and port.
-> - Never expose your GitHub token or server to the public internet without proper security controls.
+🚨 **Danger Zone** 🚨
+
+**Not recommended to host this.**
+
+> Hosting this server outside your local environment is **not recommended** due to security reasons. However, if you only need to allow limited read/search permissions for specific optimizations, take maximum precaution to secure your server and credentials.
 
 ## Usage Examples
 
@@ -163,4 +163,6 @@ bash /full/path/to/run.sh
 - You can change the location of the script as needed, but make sure to update your Cursor MCP configuration to match the new path.
 - The server will only be running while the script is active in your terminal session.
 
-**Note:** The server is not accessible from the public internet unless you specifically configure your network and firewall to allow it (not recommended for most users). 
+**Note:** The server is not accessible from the public internet unless you specifically configure your network and firewall to allow it (not recommended for most users).
+
+**Note:** As of March 2025, Microsoft Visual Studio Code has also adopted support for Model Context Protocol (MCP) servers in agent mode, making it even easier for developers to integrate AI-powered tools and workflows. Read more in the official release notes: https://code.visualstudio.com/updates/v1_99
