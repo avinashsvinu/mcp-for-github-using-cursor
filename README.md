@@ -68,9 +68,17 @@ The Model Context Protocol (MCP) is a powerful tool that allows AI assistants in
 
 ```mermaid
 graph TD
-    A[Cursor IDE] -->|User Request| B[AI Assistant]
-    B -->|MCP Protocol| C[MCP Server]
-    C -->|GitHub API| D[GitHub]
+    subgraph Local [Local: Developer Machine]
+        A[Cursor IDE]
+        B[AI Assistant]
+        C[MCP Server]
+    end
+    subgraph Remote [Remote: GitHub Cloud]
+        D[GitHub]
+    end
+    A -->|User Request| B
+    B -->|MCP Protocol| C
+    C -->|GitHub API| D
     D -->|Response| C
     C -->|Result| B
     B -->|Display| A
@@ -93,6 +101,15 @@ graph TD
     C --> J
     C --> K
 ```
+
+> **Note:**
+> - **Local**: The Cursor IDE, AI Assistant, and MCP Server all run on your local development machine during development.
+> - **Remote**: GitHub is a remote cloud service.
+>
+> If you want to host the MCP server remotely (e.g., on a cloud VM or server), you can deploy the contents of this repo and run `run.sh` on your remote machine. Make sure to:
+> - Set up secure access (e.g., firewall, authentication).
+> - Update your Cursor MCP configuration to point to the remote server's address and port.
+> - Never expose your GitHub token or server to the public internet without proper security controls.
 
 ## Usage Examples
 
@@ -130,4 +147,18 @@ Search for repositories related to machine learning
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Where is the MCP Server Hosted?
+
+The MCP server is hosted **locally** on your machine whenever you run the `run.sh` script. This means the server is not running on a remote cloud or public server, but instead starts up on your own computer each time you execute:
+
+```bash
+bash /full/path/to/run.sh
+```
+
+- The exact location of the server is determined by the path to your `run.sh` script. For example, if you placed it in `/Users/yourusername/mcp/run.sh`, then that is where the server will be started from.
+- You can change the location of the script as needed, but make sure to update your Cursor MCP configuration to match the new path.
+- The server will only be running while the script is active in your terminal session.
+
+**Note:** The server is not accessible from the public internet unless you specifically configure your network and firewall to allow it (not recommended for most users). 
